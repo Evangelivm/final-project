@@ -1,5 +1,9 @@
 # Final Project
 
+## Ideas and Planning Material
+---
+* Sound Examples (composed by Devy Salomon)
+* UML Diagram
 ## Required Technologies
 ---
 * Python 3.8.0
@@ -7,4 +11,7 @@
 
 ## Authors
 ---
-* # TODO: Add your names and emails here
+* Geraldine Cuellar
+* Devy Salomon
+* Marlon Soza
+* Mpumelelo Hlongwane
