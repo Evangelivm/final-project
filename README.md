@@ -1,33 +1,32 @@
 # Final Project
 Our game is a shooter with several enemies, with a space theme, that's why we focus on how it could be. For this we propose the use of a UML that will evolve according to the needs of the project, besides that as the arcade library allows to place music files, we thought of placing original compositions of a member of our team, which was placed a sample in the following section. The goal is to create an entertaining and original game, with our own material. In addition to certain inclusions to generate more curiosity.
 
-##Feature List
-(1) means top priority, (2) means middle priority, and (3) means lowest priority.
+## Wish List
+Main Scene
 
-(2) Main Scene
-*(2) Play button
-*(3) Help buttont
-(1) Game Scene
-*(1) User-controlled paddle
-*(1) Angled ball movement
-*(1) Multicolored bricks
-*(1) Collision detection
-*(2) Life display
-*(2) Score display
-*(2) Sound effects
-(3) Help Scene
+Play button
+Help button
+Game Scene
+User-controlled paddle
+Angled ball movement
+Multicolored bricks
+Collision detection
+Life display
+Score display
+Sound effects
+Help Scene
 
-*(3) Help text
-*(3) Back button
-(2) Win Scene
+Help text
+Back button
+Win Scene
 
-*(2) Announcement
-*(3) Smiley face animation
-(2) Lose Scene
+Announcement
+Smiley face animation
+Lose Scene
 
-*(2) Announcement
-*(2) Restart button
-*(3) Sad face animation
+Announcement
+Sad face animation
+Restart button
 
 ## Ideas and Planning Material
 ---
