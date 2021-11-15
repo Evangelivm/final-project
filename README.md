@@ -9,7 +9,7 @@ Main Scene
 Game Scene
 - User-controlled paddle
 - Plane movement
-- Multicolored bricks
+- Enemies display
 - Collision detection
 - Life display
 - Background sound
