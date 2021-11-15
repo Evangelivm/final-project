@@ -3,30 +3,30 @@ Our game is a shooter with several enemies, with a space theme, that's why we fo
 
 ## Wish List
 Main Scene
+- Play button
+- Help button
 
-Play button
-Help button
 Game Scene
-User-controlled paddle
-Angled ball movement
-Multicolored bricks
-Collision detection
-Life display
-Score display
-Sound effects
+- User-controlled paddle
+- Angled ball movement
+- Multicolored bricks
+- Collision detection
+- Life display
+- Score display
+- Sound effects
+
 Help Scene
+- Help text
+- Back button
 
-Help text
-Back button
 Win Scene
+- Announcement
+- Smiley face animation
 
-Announcement
-Smiley face animation
 Lose Scene
-
-Announcement
-Sad face animation
-Restart button
+- Announcement
+- Sad face animation
+- Restart button
 
 ## Ideas and Planning Material
 ---
