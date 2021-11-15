@@ -8,11 +8,11 @@ Main Scene
 
 Game Scene
 - User-controlled paddle
-- Angled ball movement
+- Plane movement
 - Multicolored bricks
 - Collision detection
 - Life display
-- Score display
+- Background sound
 - Sound effects
 
 Help Scene
@@ -21,11 +21,10 @@ Help Scene
 
 Win Scene
 - Announcement
-- Smiley face animation
+- Link to listen the background sound
 
 Lose Scene
 - Announcement
-- Sad face animation
 - Restart button
 
 ## Ideas and Planning Material
