@@ -3,35 +3,34 @@ Our game is a shooter with several enemies, with a space theme, that's why we fo
 
 ## Wish List
 Main Scene
+- Play button
+- Help button
 
-Play button
-Help button
 Game Scene
-User-controlled paddle
-Angled ball movement
-Multicolored bricks
-Collision detection
-Life display
-Score display
-Sound effects
+- User-controlled paddle
+- Plane movement
+- Enemies display
+- Collision detection
+- Life display
+- Background sound
+- Sound effects
+
 Help Scene
+- Help text
+- Back button
 
-Help text
-Back button
 Win Scene
+- Announcement
+- Link to listen the background sound
 
-Announcement
-Smiley face animation
 Lose Scene
-
-Announcement
-Sad face animation
-Restart button
+- Announcement
+- Restart button
 
 ## Ideas and Planning Material
 ---
 * Sound Examples (composed by Devy Salomon)
-https://drive.google.com/file/d/1Ril5wzMCviC496VAGtoSE6Zw9Vhmxb1a/view?usp=sharing
+https://drive.google.com/drive/folders/1xBj2Y0ei1F27t9XOOFBCTw4HzhUSdQW_?usp=sharing
 * UML Diagram (It will be changing according to the progress)
 https://miro.com/app/board/o9J_ljFMnHs=/?invite_link_id=338189964119
 ## Project Structure
