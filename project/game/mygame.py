@@ -64,7 +64,6 @@ class InitGame(arcade.View):
             cast(Enemy, enemy).follow_sprite(self.player)
 
         if self.joy:
-            # Joystick input - movement
             move_x, move_y, move_angle = game.get_joy_position(self.joy.move_stick_x, self.joy.move_stick_y)
             if move_angle:
                 self.player.change_x = move_x * MOVEMENT_SPEED
@@ -74,7 +73,6 @@ class InitGame(arcade.View):
                 self.player.change_x = 0
                 self.player.change_y = 0
 
-            # Joystick input - shooting
             shoot_x, shoot_y, shoot_angle = game.get_joy_position(self.joy.shoot_stick_x, self.joy.shoot_stick_y)
             if shoot_angle:
                 self.spawn_bullet(shoot_angle)

@@ -11,8 +11,6 @@ BULLET_COOLDOWN_TICKS = 10
 ENEMY_SPAWN_INTERVAL = 1
 ENEMY_SPEED = 1
 JOY_DEADZONE = 0.2
-# An angle of "0" means "right", but the player's texture is oriented in the "up" direction.
-# So an offset is needed.
 ROTATE_OFFSET = -90
 
 class Game():
@@ -41,7 +39,6 @@ class Game():
 
 
     def dump_joystick_state(ticks, joy):
-        # print("{:5.2f} {:5.2f} {:>20} {:5}_".format(1.234567, -8.2757272903, "hello", str(True)))
         fmt_str = "{:6d} "
         num_fmts = ["{:5.2f}"] * 6
         fmt_str += " ".join(num_fmts)
