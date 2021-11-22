@@ -1,13 +1,6 @@
-import arcade
-import random
-import time
 import math
-import os
 from typing import cast
 import pprint
-
-import pyglet.input.base
-
 
 SCREEN_WIDTH = 1024
 SCREEN_HEIGHT = 768
