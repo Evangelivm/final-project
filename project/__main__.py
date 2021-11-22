@@ -32,5 +32,5 @@ if __name__ == "__main__":
         ("Move the shooting stick up or down", "shoot_stick_y"),
     )
     game = InitGame()
-    window.show_view(JoyConfigView(joy_config_method_names, window.joys, game, SCREEN_WIDTH, SCREEN_HEIGHT))
+    window.show_view(JoyConfig(joy_config_method_names, window.joys, game, SCREEN_WIDTH, SCREEN_HEIGHT))
     arcade.run()
