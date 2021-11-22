@@ -29,7 +29,7 @@ Lose Scene
 
 ## Ideas and Planning Material
 ---
-* Sound Examples (composed by Devy Salomon)
+* Background Sound Examples (composed by Devy Salomon)
 https://drive.google.com/drive/folders/1xBj2Y0ei1F27t9XOOFBCTw4HzhUSdQW_?usp=sharing
 * UML Diagram (It will be changing according to the progress)
 https://miro.com/app/board/o9J_ljFMnHs=/?invite_link_id=338189964119
