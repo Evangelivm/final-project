@@ -1,6 +1,6 @@
 import arcade,time
 import pyglet.input.base
-class JoyConfigView(arcade.View):
+class JoyConfig(arcade.View):
     """A View that allows a user to interactively configure their joystick"""
     REGISTRATION_PAUSE = 1.5
     NO_JOYSTICK_PAUSE = 2.0

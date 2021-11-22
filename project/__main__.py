@@ -1,10 +1,7 @@
 import arcade
-
 import os
-from typing import cast
-
-from game.mygame import InitGame
-from game.joyconfigview import JoyConfigView
+from game.initgame import InitGame
+from game.joyconfig import JoyConfig
 
 
 SCREEN_WIDTH = 1024

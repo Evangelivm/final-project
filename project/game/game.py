@@ -1,5 +1,4 @@
 import math
-from typing import cast
 import pprint
 
 SCREEN_WIDTH = 1024
