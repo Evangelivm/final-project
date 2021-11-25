@@ -31,6 +31,7 @@ class InitGame(arcade.View):
 
     def on_show(self):
         arcade.set_background_color(arcade.color.BLUE)
+        self.background = arcade.load_texture(":resources:images/backgrounds/abstract_1.jpg")
         joys = self.window.joys
         for joy in joys:
             game.dump_joystick(joy)
@@ -185,6 +186,10 @@ class InitGame(arcade.View):
     def on_draw(self):
         # clear screen and start render process
         arcade.start_render()
+
+        arcade.draw_lrwh_rectangle_textured(0, 0,
+                                            SCREEN_WIDTH, SCREEN_HEIGHT,
+                                            self.background)
 
         # draw game items
         self.bullet_list.draw()
