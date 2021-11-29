@@ -1,4 +1,4 @@
-import arcade, random,math
+import arcade, random,math,time
 from game.player import Player
 from game.enemy import Enemy
 from game.game import Game as game
@@ -18,6 +18,9 @@ class InitGame(arcade.View):
     def __init__(self):
         super().__init__()
         self.background_music = arcade.load_sound("game\media\idea 1.wav")
+        self.collision_sound = arcade.load_sound("game\media\explosion.wav")
+        self.laser = arcade.load_sound("game\media\laserfire01.wav")
+        self.movement = arcade.load_sound("game\media\movement.wav")
         arcade.play_sound(self.background_music)
         self.game_over = False
         self.score = 0
@@ -30,8 +33,8 @@ class InitGame(arcade.View):
 
 
     def on_show(self):
-        arcade.set_background_color(arcade.color.BLUE)
-        self.background = arcade.load_texture(":resources:images/backgrounds/abstract_1.jpg")
+        arcade.set_background_color(arcade.color.GREEN)
+        self.background = arcade.load_texture("game\media\one.png")
         joys = self.window.joys
         for joy in joys:
             game.dump_joystick(joy)
@@ -80,20 +83,34 @@ class InitGame(arcade.View):
         else:
             # Keyboard input - shooting
             if self.player.shoot_right_pressed and self.player.shoot_up_pressed:
+
                 self.spawn_bullet(0 + 45)
+
             elif self.player.shoot_up_pressed and self.player.shoot_left_pressed:
+
                 self.spawn_bullet(90 + 45)
+               
             elif self.player.shoot_left_pressed and self.player.shoot_down_pressed:
+
                 self.spawn_bullet(180 + 45)
+                
             elif self.player.shoot_down_pressed and self.player.shoot_right_pressed:
+
                 self.spawn_bullet(270 + 45)
+                
             elif self.player.shoot_right_pressed:
+ 
                 self.spawn_bullet(0)
+                
             elif self.player.shoot_up_pressed:
+ 
                 self.spawn_bullet(90)
+                
             elif self.player.shoot_left_pressed:
+
                 self.spawn_bullet(180)
             elif self.player.shoot_down_pressed:
+
                 self.spawn_bullet(270)
 
         self.enemy_list.update()
@@ -116,23 +133,34 @@ class InitGame(arcade.View):
             if bullet_killed:
                 continue
 
+
     def on_key_press(self, key, modifiers):
-        if key == arcade.key.W:
+        if key == arcade.key.W :
+            arcade.play_sound(self.movement)
             self.player.change_y = MOVEMENT_SPEED
-        elif key == arcade.key.A:
+        elif key == arcade.key.A :
+            arcade.play_sound(self.movement)
             self.player.change_x = -MOVEMENT_SPEED
         elif key == arcade.key.S:
+            arcade.play_sound(self.movement)
             self.player.change_y = -MOVEMENT_SPEED
         elif key == arcade.key.D:
+            arcade.play_sound(self.movement)
             self.player.change_x = MOVEMENT_SPEED
         elif key == arcade.key.RIGHT:
+            arcade.play_sound(self.laser)
             self.player.shoot_right_pressed = True
         elif key == arcade.key.UP:
+            arcade.play_sound(self.laser)
             self.player.shoot_up_pressed = True
         elif key == arcade.key.LEFT:
+            arcade.play_sound(self.laser)
             self.player.shoot_left_pressed = True
         elif key == arcade.key.DOWN:
+            arcade.play_sound(self.laser)
             self.player.shoot_down_pressed = True
+
+
 
         rad = math.atan2(self.player.change_y, self.player.change_x)
         self.player.angle = math.degrees(rad) + ROTATE_OFFSET
@@ -152,8 +180,10 @@ class InitGame(arcade.View):
             self.player.shoot_up_pressed = False
         elif key == arcade.key.LEFT:
             self.player.shoot_left_pressed = False
+
         elif key == arcade.key.DOWN:
             self.player.shoot_down_pressed = False
+
 
         rad = math.atan2(self.player.change_y, self.player.change_x)
         self.player.angle = math.degrees(rad) + ROTATE_OFFSET
@@ -198,11 +228,11 @@ class InitGame(arcade.View):
 
         # Put the score on the screen.
         output = f"Score: {self.score}"
-        arcade.draw_text(output, 10, 20, arcade.color.WHITE, 14)
+        arcade.draw_text(output, 10, 20, arcade.color.BLACK, 14)
 
         # Game over message
         if self.game_over:
-            arcade.draw_text("Sorry, Bad End",
+            arcade.draw_text("Sorry, Another Bad End. Close the window",
                              SCREEN_WIDTH / 2,
                              SCREEN_HEIGHT / 2,
                              arcade.color.WHITE, 100,
@@ -210,3 +240,4 @@ class InitGame(arcade.View):
                              align="center",
                              anchor_x="center",
                              anchor_y="center")
+            arcade.play_sound(self.collision_sound)

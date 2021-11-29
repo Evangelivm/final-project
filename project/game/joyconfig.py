@@ -1,5 +1,7 @@
 import arcade,time
 import pyglet.input.base
+SCREEN_WIDTH = 1024
+SCREEN_HEIGHT = 768
 class JoyConfig(arcade.View):
     """A View that allows a user to interactively configure their joystick"""
     REGISTRATION_PAUSE = 1.5
@@ -36,7 +38,7 @@ class JoyConfig(arcade.View):
             if farthest_val > max_val:
                 max_attr = attr
                 max_val = farthest_val
-        self.msg = "Registered!"
+        self.msg = "Perfect!"
 
         setattr(pyglet.input.base.Joystick, method_name, property(lambda that: getattr(that, max_attr), None))
 
@@ -44,6 +46,15 @@ class JoyConfig(arcade.View):
         yield from self._pause(self.REGISTRATION_PAUSE)
 
     def joy_config_script(self):
+        self.background = arcade.load_texture(":resources:images/backgrounds/abstract_1.jpg")
+        arcade.set_background_color(arcade.color.BATTLESHIP_GREY)
+       
+        arcade.start_render()
+
+        arcade.draw_lrwh_rectangle_textured(0, 0,
+                                            SCREEN_WIDTH, SCREEN_HEIGHT,
+                                            self.background)
+
         if len(self.joys) == 0:
             self.msg = "This is the Beta Release."
             yield from self._pause(self.NO_JOYSTICK_PAUSE)
