@@ -45,7 +45,7 @@ class JoyConfig(arcade.View):
 
     def joy_config_script(self):
         if len(self.joys) == 0:
-            self.msg = "This is a Alpha Release."
+            self.msg = "This is the Beta Release."
             yield from self._pause(self.NO_JOYSTICK_PAUSE)
             return
 
