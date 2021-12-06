@@ -23,7 +23,9 @@ class InitGame(arcade.View):
         self.movement = arcade.load_sound("game\media\movement.wav")
         arcade.play_sound(self.background_music)
         self.game_over = False
+        self.pause = False
         self.score = 0
+        self.lifes = 3
         self.tick = 0
         self.bullet_cooldown = 0
         self.player = Player(":resources:images/space_shooter/playerShip1_green.png")
@@ -31,6 +33,12 @@ class InitGame(arcade.View):
         self.enemy_list = arcade.SpriteList()
         self.joy = None
 
+    def _pause(self, delay):
+        """Block a generator from advancing for the given delay. Call with 'yield from self._pause(1.0)"""
+        start = time.time()
+        end = start + delay
+        while time.time() < end:
+            yield
 
     def on_show(self):
         arcade.set_background_color(arcade.color.GREEN)
@@ -119,7 +127,9 @@ class InitGame(arcade.View):
         ship_death_hit_list = arcade.check_for_collision_with_list(self.player,
                                                                    self.enemy_list)
         if len(ship_death_hit_list) > 0:
+            arcade.play_sound(self.collision_sound)
             self.game_over = True
+
         for bullet in self.bullet_list:
             bullet_killed = False
             enemy_shot_list = arcade.check_for_collision_with_list(bullet,
@@ -129,7 +139,7 @@ class InitGame(arcade.View):
                 enemy.remove_from_sprite_lists()
                 bullet.remove_from_sprite_lists()
                 bullet_killed = True
-                self.score += 1
+                self.score += 1 * 100
             if bullet_killed:
                 continue
 
@@ -150,6 +160,12 @@ class InitGame(arcade.View):
         elif key == arcade.key.RIGHT:
             arcade.play_sound(self.laser)
             self.player.shoot_right_pressed = True
+        elif key == arcade.key.ESCAPE:
+            time.sleep(1.3)
+            arcade.exit()
+        elif key == arcade.key.P:
+            arcade.pause(2)
+           
         elif key == arcade.key.UP:
             arcade.play_sound(self.laser)
             self.player.shoot_up_pressed = True
@@ -183,7 +199,7 @@ class InitGame(arcade.View):
 
         elif key == arcade.key.DOWN:
             self.player.shoot_down_pressed = False
-
+        
 
         rad = math.atan2(self.player.change_y, self.player.change_x)
         self.player.angle = math.degrees(rad) + ROTATE_OFFSET
@@ -213,6 +229,7 @@ class InitGame(arcade.View):
         # Add the bullet to the appropriate lists
         self.bullet_list.append(bullet)
 
+    
     def on_draw(self):
         # clear screen and start render process
         arcade.start_render()
@@ -227,17 +244,34 @@ class InitGame(arcade.View):
         self.player.draw()
 
         # Put the score on the screen.
-        output = f"Score: {self.score}"
-        arcade.draw_text(output, 10, 20, arcade.color.BLACK, 14)
+        output_1 = f"P: temporary pause      ESC: exit"
+        arcade.draw_text(output_1,SCREEN_WIDTH / 2 - 150, 730, arcade.color.PURPLE_MOUNTAIN_MAJESTY, 14)
+        output = f"Score \n{self.score}"
+        arcade.draw_text(output,SCREEN_WIDTH / 2 - 40, 705, arcade.color.WHITE_SMOKE, 14)
 
         # Game over message
         if self.game_over:
-            arcade.draw_text("Sorry, Another Bad End. Close the window",
-                             SCREEN_WIDTH / 2,
-                             SCREEN_HEIGHT / 2,
+            arcade.draw_text(f"Game Over",
+                             SCREEN_WIDTH / 2 ,
+                             SCREEN_HEIGHT / 2+ 50,
                              arcade.color.WHITE, 100,
                              width=SCREEN_WIDTH,
                              align="center",
                              anchor_x="center",
                              anchor_y="center")
-            arcade.play_sound(self.collision_sound)
+            arcade.draw_text(f"Your score is {self.score}",
+                             SCREEN_WIDTH / 2,
+                             SCREEN_HEIGHT / 2 - 120,
+                             arcade.color.WHITE, 50,
+                             width=SCREEN_WIDTH,
+                             align="center",
+                             anchor_x="center",
+                             anchor_y="center")
+            arcade.draw_text(f"If you want to play one more time, close the window and run it again",
+                             SCREEN_WIDTH / 2,
+                             SCREEN_HEIGHT / 2 - 200,
+                             arcade.color.PURPLE_PIZZAZZ, 20,
+                             width=SCREEN_WIDTH,
+                             align="center",
+                             anchor_x="center",
+                             anchor_y="center")

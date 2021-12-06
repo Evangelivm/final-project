@@ -46,8 +46,9 @@ class JoyConfig(arcade.View):
         yield from self._pause(self.REGISTRATION_PAUSE)
 
     def joy_config_script(self):
-        self.background = arcade.load_texture(":resources:images/backgrounds/abstract_1.jpg")
         arcade.set_background_color(arcade.color.BATTLESHIP_GREY)
+        self.background = arcade.load_texture("game\media\cover.png")
+       
        
         arcade.start_render()
 
@@ -71,10 +72,13 @@ class JoyConfig(arcade.View):
 
     def on_draw(self):
         arcade.start_render()
-        arcade.draw_text("use W,A,S and D to move, and arrows for shoot", self.width / 2, self.height / 2 + 100,
-                         arcade.color.BLACK, font_size=32, anchor_x="center")
-        arcade.draw_text(self.msg, self.width / 2, self.height / 2,
-                         arcade.color.BLACK, font_size=24, anchor_x="center")
+        arcade.draw_lrwh_rectangle_textured(0, 0,
+                                            SCREEN_WIDTH, SCREEN_HEIGHT,
+                                            self.background)
+        arcade.draw_text("use W,A,S and D to move, and arrows for shoot", self.width / 2, self.height / 4 ,
+                         arcade.color.WHITE, font_size=32, anchor_x="center")
+        arcade.draw_text(self.msg, self.width / 2, self.height / 3,
+                         arcade.color.WHITE, font_size=24, anchor_x="center")
 
     def _pause(self, delay):
         """Block a generator from advancing for the given delay. Call with 'yield from self._pause(1.0)"""
