@@ -6,7 +6,7 @@ from game.joyconfig import JoyConfig
 
 SCREEN_WIDTH = 1024
 SCREEN_HEIGHT = 768
-SCREEN_TITLE = "Beta"
+SCREEN_TITLE = "Space Xcape"
 MOVEMENT_SPEED = 4
 BULLET_SPEED = 5
 BULLET_COOLDOWN_TICKS = 10
