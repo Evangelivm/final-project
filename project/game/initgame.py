@@ -23,9 +23,8 @@ class InitGame(arcade.View):
         self.movement = arcade.load_sound("game\media\movement.wav")
         arcade.play_sound(self.background_music)
         self.game_over = False
-        self.pause = False
+        self.final = False
         self.score = 0
-        self.lifes = 3
         self.tick = 0
         self.bullet_cooldown = 0
         self.player = Player(":resources:images/space_shooter/playerShip1_green.png")
@@ -161,8 +160,9 @@ class InitGame(arcade.View):
             arcade.play_sound(self.laser)
             self.player.shoot_right_pressed = True
         elif key == arcade.key.ESCAPE:
+            self.final = True
             time.sleep(1.3)
-            arcade.exit()
+            
         elif key == arcade.key.P:
             arcade.pause(2)
            
@@ -245,7 +245,7 @@ class InitGame(arcade.View):
 
         # Put the score on the screen.
         output_1 = f"P: temporary pause      ESC: exit"
-        arcade.draw_text(output_1,SCREEN_WIDTH / 2 - 150, 730, arcade.color.PURPLE_MOUNTAIN_MAJESTY, 14)
+        arcade.draw_text(output_1,SCREEN_WIDTH / 2 - 150, 730, arcade.color.PURPLE_MOUNTAIN_MAJESTY, 14, bold= True)
         output = f"Score \n{self.score}"
         arcade.draw_text(output,SCREEN_WIDTH / 2 - 40, 705, arcade.color.WHITE_SMOKE, 14)
 
@@ -275,3 +275,14 @@ class InitGame(arcade.View):
                              align="center",
                              anchor_x="center",
                              anchor_y="center")
+        if self.final:
+            arcade.draw_text(f"Bye",
+                             SCREEN_WIDTH / 2 ,
+                             SCREEN_HEIGHT / 2,
+                             arcade.color.WHITE, 100,
+                             width=SCREEN_WIDTH,
+                             align="center",
+                             anchor_x="center",
+                             anchor_y="center")
+            time.sleep(1)
+            arcade.exit()
