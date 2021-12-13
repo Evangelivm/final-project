@@ -296,6 +296,11 @@ class InitGame(arcade.View):
                              anchor_y="center")
             
         if self.final:
+            arcade.start_render()
+            arcade.draw_lrwh_rectangle_textured(0, 0,
+                                            SCREEN_WIDTH, SCREEN_HEIGHT,
+                                            self.background)
+            arcade.set_background_color(arcade.color.GREEN)
             arcade.draw_text(f"Bye",
                              SCREEN_WIDTH / 2 ,
                              SCREEN_HEIGHT / 2,

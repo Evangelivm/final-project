@@ -57,7 +57,7 @@ class JoyConfig(arcade.View):
                                             self.background)
 
         if len(self.joys) == 0:
-            self.msg = "This is the Release Candidate."
+            self.msg = "Loading"
             yield from self._pause(self.NO_JOYSTICK_PAUSE)
             return
 
