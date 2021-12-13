@@ -25,6 +25,7 @@ class InitGame(arcade.View):
         self.game_over = False
         self.final = False
         self.score = 0
+        self.resistance = 100
         self.tick = 0
         self.bullet_cooldown = 0
         self.player = Player(":resources:images/space_shooter/playerShip1_green.png")
@@ -125,7 +126,12 @@ class InitGame(arcade.View):
         self.bullet_list.update()
         ship_death_hit_list = arcade.check_for_collision_with_list(self.player,
                                                                    self.enemy_list)
-        if len(ship_death_hit_list) > 0:
+
+        if arcade.check_for_collision_with_list(self.player,self.enemy_list):
+            self.resistance = self.resistance - 0.5
+
+
+        if self.resistance == 0:
             arcade.play_sound(self.collision_sound)
             self.game_over = True
 
@@ -165,7 +171,7 @@ class InitGame(arcade.View):
             
         elif key == arcade.key.P:
             arcade.pause(2)
-           
+
         elif key == arcade.key.UP:
             arcade.play_sound(self.laser)
             self.player.shoot_up_pressed = True
@@ -248,9 +254,22 @@ class InitGame(arcade.View):
         arcade.draw_text(output_1,SCREEN_WIDTH / 2 - 150, 730, arcade.color.PURPLE_MOUNTAIN_MAJESTY, 14, bold= True)
         output = f"Score \n{self.score}"
         arcade.draw_text(output,SCREEN_WIDTH / 2 - 40, 705, arcade.color.WHITE_SMOKE, 14)
+        output_2 = f"Resistance: \n{self.resistance}%"
+        if self.resistance > 50:
+            arcade.draw_text(output_2,SCREEN_WIDTH / 2 - 80, 685, arcade.color.GREEN, 14)
+        if self.resistance >= 20 and self.resistance <= 50:
+            arcade.draw_text(output_2,SCREEN_WIDTH / 2 - 80, 685, arcade.color.YELLOW, 14)
+        if self.resistance < 20:
+            arcade.draw_text(output_2,SCREEN_WIDTH / 2 - 75, 685, arcade.color.RED, 14)
 
         # Game over message
         if self.game_over:
+            
+            arcade.start_render()
+            arcade.draw_lrwh_rectangle_textured(0, 0,
+                                            SCREEN_WIDTH, SCREEN_HEIGHT,
+                                            self.background)
+            arcade.set_background_color(arcade.color.GREEN)
             arcade.draw_text(f"Game Over",
                              SCREEN_WIDTH / 2 ,
                              SCREEN_HEIGHT / 2+ 50,
@@ -275,6 +294,7 @@ class InitGame(arcade.View):
                              align="center",
                              anchor_x="center",
                              anchor_y="center")
+            
         if self.final:
             arcade.draw_text(f"Bye",
                              SCREEN_WIDTH / 2 ,
