@@ -4,28 +4,19 @@ Our game is a shooter with several enemies, with a space theme, that's why we fo
 ## Wish List
 Main Scene
 - Play button
-- Help button
 
 Game Scene
 - User-controlled paddle
 - Plane movement
 - Enemies display
 - Collision detection
-- Life display
+- Life (Resistance) display
 - Background sound
 - Sound effects
 
-Help Scene
-- Help text
-- Back button
-
-Win Scene
+Finish Scene
 - Announcement
 - Link to listen the background sound
-
-Lose Scene
-- Announcement
-- Restart button
 
 ## Ideas and Planning Material
 ---
